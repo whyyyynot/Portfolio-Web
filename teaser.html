@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, initial-scale=1.0">
+  <title>Teaser</title>
+  <link href="https://fonts.googleapis.com/css?family=Oswald:400,600&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background: #fff;
+    }
+    .bg-img {
+      position: fixed;
+      left: -0.25vw;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 1;
+      pointer-events: none;
+      transition: left 0.5s;
+    }
+    .frame {
+      position: relative;
+      width: 100vw;
+      margin: 0 auto;
+      background: transparent;
+      box-shadow: 0 0 32px rgba(0,0,0,0.08);
+      z-index: 2;
+      transition: opacity 2s;
+    }
+    .main-block {
+      position: absolute;
+      top: 20vh;
+      left: 0;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 2;
+    }
+    .main-text {
+      font-family: 'Oswald', Arial, sans-serif;
+      font-weight: 600;
+      font-size: 5vw;
+      line-height: 1.48em;
+      color: #fff;
+      text-align: center;
+      width: 70vw;
+      word-break: break-word;
+      margin-bottom: 3vh;
+    }
+    .yellow-rect {
+      background: #FFDB4A;
+      border-radius: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5vh 2vw;
+      margin-bottom: 3vh;
+      width: auto;
+      min-width: 0;
+      max-width: 90vw;
+      box-sizing: border-box;
+    }
+    .sub-text {
+      font-family: 'Oswald', Arial, sans-serif;
+      font-weight: 400;
+      font-size: 1.7vw;
+      line-height: 1.2em;
+      color: #000;
+      text-transform: uppercase;
+      text-align: center;
+      width: auto;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 80vw;
+    }
+    .scroll-indicator {
+      position: fixed;
+      left: 52.6%;
+      top: 90vh;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: auto;
+    }
+    .scroll-chevron {
+      width: 4vw;
+      height: 4vw;
+      display: block;
+      stroke: #fff;
+      stroke-width: 0.2vw;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      opacity: 0.7;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+      animation: bounce 1.5s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(10px); }
+    }
+    @media (max-width: 600px) {
+      .main-text { font-size: 7vw; width: 90vw; }
+      .yellow-rect { width: 70vw; height: 7vh; }
+      .sub-text { font-size: 4vw; }
+    }
+    @media (max-width: 900px) {
+      .yellow-rect { padding: 1vh 4vw; max-width: 98vw; }
+      .sub-text { font-size: 3vw; max-width: 90vw; white-space: normal; }
+    }
+    .fade-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 2s;
+      z-index: 100;
+    }
+    .fade-overlay.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .fade-overlay .fade-message {
+      color: #fff;
+      font-family: 'Oswald', Arial, sans-serif;
+      font-size: 3vw;
+      text-align: center;
+      letter-spacing: 1px;
+      padding: 0 5vw;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.5);
+    }
+    .frame, .scroll-indicator {
+      transition: opacity 2s;
+    }
+    .faded {
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <img src="assets/teaser-bg.jpg" alt="Background" class="bg-img" />
+  <div class="frame">
+    <div class="main-block">
+      <div class="main-text">I thought that all generations were lost by something and always had been and always would be.</div>
+      <div class="yellow-rect">
+        <span class="sub-text">But there is always something we live for right?</span>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <svg class="scroll-chevron" viewBox="0 0 40 40"><polyline points="10,16 20,28 30,16" /></svg>
+    </div>
+  </div>
+  <div class="fade-overlay" id="fadeOverlay">
+    <div class="fade-message">Hope my passion would light something inside</div>
+  </div>
+  <div style="height: 120vh;"></div>
+  <script>
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 10) {
+        document.querySelector('.frame').classList.add('faded');
+        document.querySelector('.scroll-indicator').classList.add('faded');
+        document.getElementById('fadeOverlay').classList.add('visible');
+      } else {
+        document.querySelector('.frame').classList.remove('faded');
+        document.querySelector('.scroll-indicator').classList.remove('faded');
+        document.getElementById('fadeOverlay').classList.remove('visible');
+      }
+    });
+  </script>
+</body>
+</html> 
