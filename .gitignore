@@ -1,0 +1,39 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+.env/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# VSCode files
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Ignore node modules (if using Node.js tooling)
+node_modules/
+
+# Ignore log files
+*.log
+
+# Ignore asset cache or build output
+/dist/
+/build/
+.cache/
+
+# Ignore IDE/editor folders
+.idea/
+
+# Ignore environment files
+.env
+.env.*
+
+# Ignore image/video cache
+assets/*.tmp
+assets/*.bak
