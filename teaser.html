@@ -6,6 +6,12 @@
   <title>Teaser</title>
   <link href="https://fonts.googleapis.com/css?family=Oswald:400,600&display=swap" rel="stylesheet">
   <style>
+    @font-face {
+      font-family: 'Westfalia';
+      src: url('assets/fonts/Westfalia.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+    }
     html, body {
       margin: 0;
       padding: 0;
@@ -46,15 +52,24 @@
       z-index: 2;
     }
     .main-text {
-      font-family: 'Oswald', Arial, sans-serif;
-      font-weight: 600;
-      font-size: 5vw;
-      line-height: 1.48em;
-      color: #fff;
+      font-family: 'Westfalia', Arial, sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 96px;
+      line-height: 115px;
       text-align: center;
-      width: 70vw;
+      color: rgba(255, 255, 255, 0.7);
+      text-transform: uppercase;
+      width: 1420px;
+      height: 345px;
+      margin-bottom: 0;
       word-break: break-word;
-      margin-bottom: 3vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: none;
+      order: 0;
+      flex-grow: 0;
     }
     .yellow-rect {
       background: #FFDB4A;
@@ -70,13 +85,14 @@
       box-sizing: border-box;
     }
     .sub-text {
-      font-family: 'Oswald', Arial, sans-serif;
+      font-family: 'Westfalia', Arial, sans-serif;
       font-weight: 400;
-      font-size: 1.7vw;
+      font-size: 32px;
       line-height: 1.2em;
-      color: #000;
+      color: #FFDB4A;
       text-transform: uppercase;
       text-align: center;
+      margin-top: 16px;
       width: auto;
       white-space: nowrap;
       overflow: hidden;
@@ -115,16 +131,16 @@
     @media (max-width: 600px) {
       .main-text { font-size: 7vw; width: 90vw; }
       .yellow-rect { width: 70vw; height: 7vh; }
-      .sub-text { font-size: 4vw; }
+      .sub-text { font-size: 6vw; margin-top: 3vw; }
     }
     @media (max-width: 900px) {
       .yellow-rect { padding: 1vh 4vw; max-width: 98vw; }
-      .sub-text { font-size: 3vw; max-width: 90vw; white-space: normal; }
+      .sub-text { font-size: 5vw; margin-top: 2vw; max-width: 90vw; white-space: normal; }
     }
     .fade-overlay {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.85);
+      background: #000;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -138,13 +154,28 @@
       pointer-events: auto;
     }
     .fade-overlay .fade-message {
-      color: #fff;
-      font-family: 'Oswald', Arial, sans-serif;
-      font-size: 3vw;
+      color: #FFDB4A;
+      font-family: 'Westfalia', Arial, sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 96px;
+      line-height: 115px;
       text-align: center;
+      text-transform: uppercase;
       letter-spacing: 1px;
       padding: 0 5vw;
       text-shadow: 0 2px 16px rgba(0,0,0,0.5);
+      position: absolute;
+      width: 1117px;
+      height: 230px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      row-gap: 0;
     }
     .frame, .scroll-indicator {
       transition: opacity 2s;
@@ -153,36 +184,447 @@
       opacity: 0;
       pointer-events: none;
     }
+    .film-effect {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 1;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 2s;
+      mix-blend-mode: screen;
+      filter: sepia(1) saturate(4) hue-rotate(0deg) brightness(1.1);
+    }
+    .fade-overlay.visible .film-effect {
+      opacity: 0.7;
+    }
+    @keyframes flickerFadeIn {
+      0% { opacity: 0; filter: blur(2px); }
+      10% { opacity: 0.7; filter: blur(1.5px);}
+      20% { opacity: 0.3; filter: blur(2px);}
+      30% { opacity: 0.8; filter: blur(1px);}
+      40% { opacity: 0.5; filter: blur(2px);}
+      50% { opacity: 1; filter: blur(0);}
+      100% { opacity: 1; filter: blur(0);}
+    }
+    .fade-overlay.visible .fade-message {
+      animation: flickerFadeIn 2s cubic-bezier(.77,0,.18,1) 1;
+    }
+    .fade-message-large {
+      font-size: 96px;
+      line-height: 1;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .fade-message-small {
+      font-size: 36px;
+      line-height: 1;
+      display: block;
+      text-align: center;
+      margin: 2px;
+      padding: 2px;
+    }
+    .fade-overlay-blue {
+      background: #3BB5D9;
+    }
+    .fade-message-blue {
+      color: #fff;
+      font-family: 'Westfalia', Arial, sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 48px;
+      line-height: 1.2;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 0 5vw;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.2);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #typewriter-blue, #blue-second {
+      color: #fff;
+    }
+    #typewriter-blue {
+      color: #FFDB4A;
+    }
+    .right-btn {
+      color: #FFDB4A;
+      background: transparent;
+      border: 2px solid #FFDB4A;
+      border-radius: 16px;
+      font-family: 'Westfalia', Arial, sans-serif;
+      font-size: 96px;
+      text-transform: uppercase;
+      padding: 0 36px;
+      margin-left: 8px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      outline: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      line-height: 1;
+      height: 1em;
+      vertical-align: middle;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      top: -20px;
+    }
+    .right-btn:hover, .right-btn:focus {
+      background: #FFDB4A;
+      color: #3BB5D9;
+      box-shadow: 0 4px 16px rgba(59,181,217,0.15);
+    }
+    .menu-btn {
+      border: 2px solid #FFDB4A;
+      border-radius: 6px;
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      outline: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .menu-btn span {
+      font-family: 'Westfalia', Arial, sans-serif;
+      font-size: 48px;
+      line-height: 58px;
+      text-transform: uppercase;
+      color: #FFDB4A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .menu-btn:hover, .menu-btn:focus {
+      background: #FFDB4A;
+      box-shadow: 0 4px 16px rgba(59,181,217,0.15);
+    }
+    .menu-btn:hover span, .menu-btn:focus span {
+      color: #3BB5D9;
+    }
+    /* Figma Slide 16:9 - 9 Overlay Styles */
+    #slide169Overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url('assets/background.png') center center/cover no-repeat;
+      background-blend-mode: lighten;
+      z-index: 9999;
+      font-family: 'Oswald', Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .slide169-content {
+      position: relative;
+      left: center;
+      top: center;
+      margin: 0 auto;
+      width: 80vw;
+      max-width: 1600px;
+      height: auto;
+      font-family: 'Oswald', Arial, sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: clamp(1.3rem, 3.25vw, 2.6rem);
+      line-height: 1.2;
+      color: #000;
+      text-align: left;
+      word-break: break-word;
+      box-sizing: border-box;
+      padding: 3vw;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.15);
+      background: rgba(255,255,255,0.8);
+    }
+    .slide169-content::before {
+      content: none;
+    }
+    .slide169-content > * {
+      position: relative;
+      z-index: 1;
+    }
+    .slide169-content .highlight-yellow,
+    .slide169-content .highlight-blue {
+      font-size: clamp(1.56rem, 3.9vw, 3.25rem);
+    }
+    .slide169-menu-btn {
+      position: absolute;
+      top: 1.75vw;
+      right: 2vw;
+      width: clamp(60px, 7vw, 100px);
+      height: clamp(28px, 3.5vw, 40px);
+      border: 2px solid #FFDB4A;
+      border-radius: 6px;
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      z-index: 2;
+    }
+    .slide169-menu-btn span {
+      font-family: 'Westfalia', Arial, sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: clamp(0.9rem, 2vw, 1.3rem);
+      line-height: 1.2;
+      text-transform: uppercase;
+      color: #FFDB4A;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .slide169-menu-btn:hover, .slide169-menu-btn:focus {
+      background: #FFDB4A;
+      color: #3BB5D9;
+      box-shadow: 0 4px 16px rgba(59,181,217,0.15);
+    }
+    .slide169-menu-btn:hover span, .slide169-menu-btn:focus span {
+      color: #3BB5D9;
+    }
+    @media (max-width: 900px) {
+      .slide169-content {
+        left: 4vw;
+        top: 12vw;
+        width: 92vw;
+        max-width: 98vw;
+        font-size: clamp(1.1rem, 5vw, 2.2rem);
+        line-height: 1.2;
+      }
+      .slide169-menu-btn {
+        right: 4vw;
+        top: 4vw;
+        width: clamp(80px, 20vw, 120px);
+        height: clamp(32px, 8vw, 48px);
+      }
+      .slide169-menu-btn span {
+        font-size: clamp(1rem, 4vw, 1.5rem);
+      }
+    }
+    @media (max-width: 600px) {
+      .slide169-content {
+        left: 3vw;
+        top: 18vw;
+        width: 94vw;
+        max-width: 100vw;
+        font-size: clamp(1rem, 6vw, 1.5rem);
+        line-height: 1.1;
+      }
+      .slide169-menu-btn {
+        right: 3vw;
+        top: 3vw;
+        width: clamp(60px, 30vw, 80px);
+        height: clamp(24px, 10vw, 32px);
+      }
+      .slide169-menu-btn span {
+        font-size: clamp(0.8rem, 5vw, 1.1rem);
+      }
+    }
+    .highlight-yellow {
+      font-family: 'Westfalia', Arial, sans-serif;
+      font-size: clamp(2.2rem, 5.5vw, 72px);
+      color: #FFDB4A;
+    }
+    .highlight-blue {
+      font-family: 'Westfalia', Arial, sans-serif;
+      font-size: clamp(2.2rem, 5.5vw, 72px);
+      color: #3BB5D9;
+    }
   </style>
 </head>
 <body>
   <img src="assets/teaser-bg.jpg" alt="Background" class="bg-img" />
   <div class="frame">
     <div class="main-block">
-      <div class="main-text">I thought that all generations were lost by something and always had been and always would be.</div>
-      <div class="yellow-rect">
-        <span class="sub-text">But there is always something we live for right?</span>
-      </div>
+      <div class="main-text" id="typewriter"></div>
+      <span class="sub-text" id="author" style="display:none;">- Ernest Hemingway</span>
     </div>
     <div class="scroll-indicator">
       <svg class="scroll-chevron" viewBox="0 0 40 40"><polyline points="10,16 20,28 30,16" /></svg>
     </div>
   </div>
+  <!--
+    Film grain/noise effect video overlay:
+    This video is tinted yellow and appears only with the overlay text ("Okay Hemingway, a bit dramatic...").
+    It is placed inside the fade-overlay div so it fades in/out together with the text.
+  -->
   <div class="fade-overlay" id="fadeOverlay">
-    <div class="fade-message">Hope my passion would light something inside</div>
+    <video id="filmEffect" class="film-effect" src="assets/film_layer.mp4" autoplay loop muted playsinline></video>
+    <div class="fade-message">
+      <span class="fade-message-small">Okay Hemingway,</span>
+      <span class="fade-message-large">a bit heavy...</span>
+    </div>
+  </div>
+  <!--
+    Blue overlay section for positive message
+  -->
+  <div class="fade-overlay fade-overlay-blue" id="fadeOverlayBlue" style="opacity:0; pointer-events:none;">
+    <div class="fade-message fade-message-blue">
+      <span id="typewriter-blue"></span>
+      <span id="blue-second" style="opacity:0; transition: opacity 1s; position:absolute; left:0; right:0; margin:auto; text-align:center;"></span>
+    </div>
   </div>
   <div style="height: 120vh;"></div>
+  <!-- Slide 16:9 - 9 overlay (Figma node-id=170-23) -->
+  <div id="slide169Overlay">
+    <div class="slide169-content">
+      Hi, I'm <span class="highlight-yellow">HANYANG.</span><br>
+      This site is all about me — the things I love, the stuff I've made, the little obsessions I can't stop thinking about.<br>
+      Sometimes it's cool, sometimes it's odd, but <span class="highlight-blue">ALWAYS WITH HEART.</span><br>
+      Take a look around. Maybe something here <span class="highlight-yellow">CLICKS</span> with you too.
+    </div>
+    <button id="menuBtn" class="slide169-menu-btn">
+      <span>Menu</span>
+    </button>
+  </div>
   <script>
+    const fadeOverlay = document.getElementById('fadeOverlay');
+    const fadeOverlayBlue = document.getElementById('fadeOverlayBlue');
+    const filmEffect = document.getElementById('filmEffect');
+
+    // Typewriter effect for main quote
+    const typewriterText = "I thought that all generations were lost by something and always had been and always would be.";
+    const typewriterElem = document.getElementById('typewriter');
+    const authorElem = document.getElementById('author');
+    let typeIndex = 0;
+    function typeWriter() {
+      if (typeIndex < typewriterText.length) {
+        typewriterElem.textContent += typewriterText.charAt(typeIndex);
+        typeIndex++;
+        setTimeout(typeWriter, 80);
+      } else {
+        // Start typewriter for author
+        let authorText = "- Ernest Hemingway";
+        let authorIndex = 0;
+        authorElem.textContent = '';
+        authorElem.style.display = 'inline';
+        function typeAuthor() {
+          if (authorIndex < authorText.length) {
+            authorElem.textContent += authorText.charAt(authorIndex);
+            authorIndex++;
+            setTimeout(typeAuthor, 80);
+          }
+        }
+        typeAuthor();
+      }
+    }
+    typeWriter();
+
     window.addEventListener('scroll', function() {
-      if (window.scrollY > 10) {
+      const scrollY = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = docHeight > 0 ? scrollY / docHeight : 0;
+      if (scrollY > 10 && scrollPercent < 0.8) {
+        // Show first overlay
         document.querySelector('.frame').classList.add('faded');
         document.querySelector('.scroll-indicator').classList.add('faded');
-        document.getElementById('fadeOverlay').classList.add('visible');
+        fadeOverlay.classList.add('visible');
+        fadeOverlayBlue.style.opacity = 0;
+        fadeOverlayBlue.style.pointerEvents = 'none';
+      } else if (scrollPercent >= 0.8) {
+        // Show blue overlay
+        document.querySelector('.frame').classList.add('faded');
+        document.querySelector('.scroll-indicator').classList.add('faded');
+        fadeOverlay.classList.remove('visible');
+        fadeOverlayBlue.style.opacity = 1;
+        fadeOverlayBlue.style.pointerEvents = 'auto';
       } else {
+        // Show neither
         document.querySelector('.frame').classList.remove('faded');
         document.querySelector('.scroll-indicator').classList.remove('faded');
-        document.getElementById('fadeOverlay').classList.remove('visible');
+        fadeOverlay.classList.remove('visible');
+        fadeOverlayBlue.style.opacity = 0;
+        fadeOverlayBlue.style.pointerEvents = 'none';
       }
+    });
+    if (filmEffect) {
+      filmEffect.playbackRate = 0.5;
+    }
+
+    // Typewriter effect for blue overlay message
+    const blueText = "But hey,";
+    const blueSecondText = "there's always something worth waking up for, chasing after, dreaming about, right?";
+    const blueElem = document.getElementById('typewriter-blue');
+    const blueSecond = document.getElementById('blue-second');
+    let blueTyped = false;
+    fadeOverlayBlue.addEventListener('transitionend', function(e) {
+      if (fadeOverlayBlue.style.opacity == '1' && e.propertyName === 'opacity' && !blueTyped) {
+        blueElem.textContent = '';
+        blueElem.style.opacity = 1;
+        blueSecond.textContent = '';
+        blueSecond.style.opacity = 0;
+        let blueIndex = 0;
+        function typeBlue() {
+          if (blueIndex < blueText.length) {
+            blueElem.textContent += blueText.charAt(blueIndex);
+            blueIndex++;
+            setTimeout(typeBlue, 80);
+          } else {
+            // Fade out 'But hey,' and typewriter the second line
+            blueElem.style.transition = 'opacity 1s';
+            blueElem.style.opacity = 0;
+            setTimeout(() => {
+              blueSecond.style.opacity = 1;
+              let blueSecondIndex = 0;
+              function typeBlueSecond() {
+                if (blueSecondIndex < blueSecondText.length) {
+                  blueSecond.textContent += blueSecondText.charAt(blueSecondIndex);
+                  blueSecondIndex++;
+                  setTimeout(typeBlueSecond, 60);
+                } else {
+                  // After typing, make 'right?' a button
+                  const fullText = blueSecond.textContent;
+                  const rightIndex = fullText.lastIndexOf('right?');
+                  if (rightIndex !== -1) {
+                    blueSecond.innerHTML = fullText.substring(0, rightIndex) + '<button id="rightBtn" class="right-btn">right?</button>';
+                  }
+                }
+              }
+              typeBlueSecond();
+            }, 1000);
+          }
+        }
+        typeBlue();
+        blueTyped = true;
+      } else if (fadeOverlayBlue.style.opacity == '0') {
+        blueElem.textContent = '';
+        blueElem.style.opacity = 1;
+        blueSecond.textContent = '';
+        blueSecond.style.opacity = 0;
+        blueTyped = false;
+      }
+    });
+
+    // Show Slide 16:9 - 9 overlay on right? button click
+    document.addEventListener('click', function(e) {
+      if (e.target && e.target.id === 'rightBtn') {
+        window.location.href = 'about.html';
+      }
+    });
+
+    window.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('slide169Overlay').style.display = 'none';
     });
   </script>
 </body>

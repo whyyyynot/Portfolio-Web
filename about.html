@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Hanyang</title>
+  <link href="https://fonts.googleapis.com/css?family=Oswald:400,600&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Westfalia';
+      src: url('assets/fonts/Westfalia.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: url('assets/background.png') center center / cover no-repeat;
+      background-blend-mode: lighten;
+      background-attachment: fixed;
+      font-family: 'Oswald', Arial, sans-serif;
+      color: #000;
+      overflow-x: hidden;
+    }
+    .slide169-content {
+      position: relative;
+      margin: 5vh auto 0 auto;
+      width: 80vw;
+      max-width: 1600px;
+      min-height: 60vh;
+      box-sizing: border-box;
+      padding: 3vw;
+      background: rgba(255,255,255,0.0);
+    }
+    .slide169-menu-btn {
+      position: fixed;
+      top: 2vw;
+      right: 2vw;
+      width: clamp(60px, 7vw, 100px);
+      height: clamp(28px, 3.5vw, 40px);
+      border: 2px solid #FFDB4A;
+      border-radius: 6px;
+      background: rgba(255,255,255,0);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      z-index: 1000;
+      
+      transform: scale(1.3);
+      transform-origin: top right;
+    }
+    .slide169-menu-btn span {
+      font-family: 'Westfalia', Arial, sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: clamp(0.72rem, 1.6vw, 1.04rem);
+      line-height: 1.2;
+      text-transform: uppercase;
+      color: #FFDB4A;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: scale(1.3);
+    }
+    .slide169-menu-btn:hover, .slide169-menu-btn:focus {
+      background: #FFDB4A;
+      color: #3BB5D9;
+      box-shadow: 0 4px 16px rgba(59,181,217,0.15);
+    }
+    .slide169-menu-btn:hover span, .slide169-menu-btn:focus span {
+      color: #3BB5D9;
+    }
+    @media (max-width: 900px) {
+      .slide169-content {
+        width: 92vw;
+        max-width: 98vw;
+        font-size: clamp(0.88rem, 4vw, 1.76rem);
+        line-height: 1.2;
+      }
+      .slide169-menu-btn {
+        right: 4vw;
+        top: 4vw;
+        width: clamp(80px, 20vw, 120px);
+        height: clamp(32px, 8vw, 48px);
+      }
+      .slide169-menu-btn span {
+        font-size: clamp(0.8rem, 3.2vw, 1.2rem);
+      }
+    }
+    @media (max-width: 600px) {
+      .slide169-content {
+        width: 94vw;
+        max-width: 100vw;
+        font-size: clamp(0.8rem, 4.8vw, 1.2rem);
+        line-height: 1.1;
+      }
+      .slide169-menu-btn {
+        right: 3vw;
+        top: 3vw;
+        width: clamp(60px, 30vw, 80px);
+        height: clamp(24px, 10vw, 32px);
+      }
+      .slide169-menu-btn span {
+        font-size: clamp(0.64rem, 4vw, 0.88rem);
+      }
+    }
+    .about-section {
+      margin-top: 5vh;
+      padding: 2vw 3vw;
+      background: rgba(255,255,255,0.95);
+      border-radius: 12px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+      font-size: 0.96em;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .about-text-block {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2em;
+      align-items: flex-start;
+      max-width: 900px;
+      margin: 40px auto 0 auto;
+    }
+    .about-line {
+      background: rgba(255,255,255,0.8);
+      font-family: 'Oswald', Arial, sans-serif;
+      font-weight: 400;
+      font-size: clamp(1.2rem, 3.04vw, 49.2px);
+      line-height: 1.48em;
+      color: #000;
+      text-align: left;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+      padding: 0.3em 2.5em;
+      width: 100%;
+      max-width: 100%;
+    }
+    .intro-image {
+      width: 100%;
+      max-width: 1200px;
+      display: block;
+      margin: 0 auto;
+      transform: scale(1.3);
+      transform-origin: center top;
+      transition: transform 0.3s;
+    }
+    .blank-section {
+      width: 100%;
+      min-height: 40vh;
+      background: transparent;
+      margin: 40px 0 0 0;
+    }
+    .slide169-back-btn {
+      position: fixed;
+      top: 0.5vw;
+      left: 2vw;
+      background: none;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      margin: 0;
+      z-index: 1000;
+      cursor: pointer;
+      width: 4rem;
+      height: 4rem;
+      transform: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .back-arrow {
+      font-size: 4rem;
+      color: #FFDB4A;
+      font-family: 'Westfalia', Arial, sans-serif;
+      line-height: 1;
+      display: block;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      transition: color 0.2s;
+    }
+    .slide169-back-btn:hover .back-arrow,
+    .slide169-back-btn:focus .back-arrow {
+      color: #3BB5D9;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide169-content">
+    <img src="assets/Intro Text.png" alt="Intro Text" class="intro-image" />
+    <button id="menuBtn" class="slide169-menu-btn">
+      <span>Menu</span>
+    </button>
+    <button id="backBtn" class="slide169-back-btn" onclick="window.location.href='teaser.html'" aria-label="Back">
+      <span class="back-arrow">&#8592;</span>
+    </button>
+  </div>
+  <div class="about-section">
+    <!-- Add your detailed introduction or things you love here -->
+    <h2>Things I Love</h2>
+    <ul>
+      <li>Art & Design</li>
+      <li>Technology & Coding</li>
+      <li>Travel & Culture</li>
+      <li>Music & Creativity</li>
+      <!-- Add more as you wish -->
+    </ul>
+    <p>Feel free to expand this section with more details, images, or anything you want to share!</p>
+  </div>
+  <div class="blank-section"></div>
+</body>
+</html> 
