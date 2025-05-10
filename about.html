@@ -110,10 +110,10 @@
       }
     }
     .about-section {
-      margin-top: 5vh;
+      margin-top: 8vh;
+      margin-bottom: 8vh;
       padding: 2vw 3vw;
       background: rgba(255,255,255,0.95);
-      border-radius: 12px;
       box-shadow: 0 2px 16px rgba(0,0,0,0.08);
       font-size: 0.96em;
       max-width: 1200px;
@@ -189,6 +189,60 @@
     .slide169-back-btn:focus .back-arrow {
       color: #3BB5D9;
     }
+    .about-section h2 {
+      margin-top: -0.4em;
+      margin-bottom: 1.2em;
+    }
+    .image-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 3vw;
+      margin-top: 2em;
+    }
+    .image-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1 1 0;
+      min-width: 0;
+      height: 100%;
+      justify-content: space-between;
+    }
+    .image-col img {
+      margin: 0 auto 0.5em auto;
+      width: 180px;
+      max-width: 40vw;
+      display: block;
+    }
+    .image-col img.snowboarding {
+      border-radius: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    }
+    .image-col img.design {
+      border-radius: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    }
+    .image-col img.formulastudent {
+      border-radius: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    }
+    .image-col p {
+      text-align: center;
+      font-size: 2rem !important;
+      color: #222;
+      margin-top: 0.2em;
+      margin-bottom: 0;
+      word-break: break-word;
+    }
+    .image-col a img {
+      transition: transform 0.25s cubic-bezier(.4,2,.6,1);
+    }
+    .image-col a:hover img,
+    .image-col a:focus img {
+      transform: rotate(8deg) scale(1.05);
+    }
   </style>
 </head>
 <body>
@@ -202,17 +256,51 @@
     </button>
   </div>
   <div class="about-section">
-    <!-- Add your detailed introduction or things you love here -->
-    <h2>Things I Love</h2>
-    <ul>
-      <li>Art & Design</li>
-      <li>Technology & Coding</li>
-      <li>Travel & Culture</li>
-      <li>Music & Creativity</li>
-      <!-- Add more as you wish -->
-    </ul>
-    <p>Feel free to expand this section with more details, images, or anything you want to share!</p>
+    <h2><span class="highlight-yellow" style="font-family: 'Westfalia', Arial, sans-serif; font-size: 3rem; color: #FFDB4A;">I LOVE SNOWBOARDING, SO...</span></h2>
+    <div class="image-row">
+      <div class="image-col">
+        <img src="assets/Snowborading.jpg" alt="Snowboarding" class="snowboarding" />
+        <p style="text-align:center;font-size:1.1em;color:#222;">I snowboard a lot.</p>
+      </div>
+      <div class="image-col">
+        <a href="https://snowoverflow.com/" target="_blank" rel="noopener">
+          <img src="assets/logo.png" alt="Group Logo" />
+        </a>
+        <p style="text-align:center;font-size:1.1em;color:#222;">And joined a group and designed this.</p>
+      </div>
+    </div>
+  </div>
+  <div class="about-section">
+    <h2>
+      <span class="highlight-yellow" style="font-family: 'Westfalia', Arial, sans-serif; font-size: 3rem; color: #FFDB4A;">
+        I LOVE CLASSY CARS, SO...
+      </span>
+    </h2>
+    <div class="image-row">
+      <div class="image-col">
+        <img src="assets/car.jpg" alt="Design" class="design" />
+        <p style="text-align:center;font-size:1.1em;color:#222;">I become a car enthusiast.</p>
+      </div>
+      <div class="image-col">
+        <a href="https://www.nottingham.edu.cn/en/university-life/news/article.aspx?id=f680a507-f6da-4bb5-808a-f526cb8a7ba7&language=en-GB" target="_blank" rel="noopener">
+          <img src="assets/formularstudent.jpg" alt="formulastudent" />
+        </a>
+        <p style="text-align:center;font-size:1.1em;color:#222;">And joined a Formula Team to be a mechanic.</p>
+      </div>
+    </div>
+  </div>
+  <div class="about-section">
+    <h2>
+      <span class="highlight-yellow" style="font-family: 'Westfalia', Arial, sans-serif; font-size: 3rem; color: #FFDB4A;">
+        STILL IN CONSTRUCTION
+      </span>
+    </h2>
+    <p style="font-size:1.2em; color:#888; text-align:center;">This section is coming soon. Stay tuned!</p>
   </div>
   <div class="blank-section"></div>
+  <footer style="width:100%;padding:0.8em 0 0.5em 0;text-align:center;background:rgba(255,255,255,0.85);font-family:'Oswald',Arial,sans-serif;font-size:1.1em;color:#222;box-shadow:0 -2px 16px rgba(0,0,0,0.06);margin-top:0.3em;">
+    <a href="https://www.linkedin.com/in/hanyang-wang-339100289/" target="_blank" rel="noopener" style="color:#000;text-decoration:none;font-weight:600;margin-right:2em;">LinkedIn: @hanyang-wang-339100289</a>
+    <a href="mailto:hanyangwang001@gmail.com" style="color:#000;text-decoration:none;font-weight:600;">Email: hanyangwang001@gmail.com</a>
+  </footer>
 </body>
 </html> 
